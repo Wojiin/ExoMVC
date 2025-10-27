@@ -7,23 +7,28 @@
         <tr>
             <th>TITRE</th>
             <th>ANNEE SORTIE</th>
+            <th>DUREE</th>
+            <th>PRENOM REALISATEUR</th>
+            <th>NOM REALISATEUR</th>
         </tr>
     </thead>
     <tbody>
         <?php
-            foreach($requete->fetchAll() as $film) { ?>
+            foreach($requeteFilm->fetchAll() as $film) { ?>
                 <tr>
                     <td><?= $film["title"] ?></td>
                     <td><?= $film["year_of_release"] ?></td>
+                    <td><?= $film["duration"] ?></td>
+                    <td><?= $film["first_name"] ?></td>
+                    <td><?= $film["last_name"] ?></td>
                 </tr>
         <?php } ?>
     </tbody>
 </table>
-
+            <p>Avec :</p>
+            <?php
+            foreach($requeteCasting->fetchAll() as $casting) { ?>
+                    <p><?= $casting["first_name"] ?> <?=$casting["last_name"]  ?> dans le rôle de <?= $casting["character_first_name"] ?> <?= $casting["character_last_name"] ?>, </p>                
+                <?php } ?>
 <?php
 
-$titre = "Liste des films";
-$titre_secondaire = "Liste des films";
-//Fin de la mise en mémoire tampon + récupération du contenu tamponné dans la variable $contenu
-// $contenu = ob_get_clean();
-require "view/template.php";

@@ -22,7 +22,7 @@ abstract class Connect {
                 dbname=".self::DB.";
                 charset=utf8", self::USER, self::PASS
             );
-            //Préviens une erreur de typing
+            //Préviens d'une erreur de typing
         } catch(\PDOException $ex) {
             return $ex->getMessage();
         }
