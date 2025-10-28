@@ -1,12 +1,19 @@
 <?php
 
 use Controller\CinemaController;
+use Controller\AdminController;
+use Controller\HomeController;
+use Controller\PersonController;
 
 spl_autoload_register(function ($class_name){
     include $class_name . '.php';
 });
 
 $ctrlCinema = new CinemaController();
+$ctrlAdmin = new AdminController();
+$ctrlHome = new HomeController();
+$ctrlPerson = new PersonController();
+
 $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 
 if(isset($_GET["action"])){
@@ -17,7 +24,11 @@ if(isset($_GET["action"])){
         break;
         case "detFilm" : $ctrlCinema->detFilm($id);
         break;
-        case "detActor" : $ctrlCinema->detActor($id);
-        default : 
+        case "detActor" : $ctrlPerson->detActor($id);
+        break;
+        case "detDirector" : $ctrlPerson->detDirector($id);
+        break;
+        case "accueil" : $ctrlHome->accueil();
+        break;
     }
 }

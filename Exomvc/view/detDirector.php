@@ -1,7 +1,7 @@
 
 <?php
-$titre = "Détails de l'acteur";
-$titre_secondaire = "Détails de l'acteur";?>
+$titre = "Détails du réalisateur";
+$titre_secondaire = "Détails du réalisateur";?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,33 +22,32 @@ $titre_secondaire = "Détails de l'acteur";?>
 <table class="uk-table uk-table-striped">
     <thead>
         <tr>
-            <th>ACTEUR</th>
+            <th>REALISATEUR</th>
             <th>GENRE</th>
             <th>DATE DE NAISSANCE</th>
         </tr>
     </thead>
     <tbody>
         <?php
-            foreach($requeteActeur->fetchAll() as $actor) { ?>
+            foreach($requeteDirector->fetchAll() as $director) { ?>
                 <tr>
-                    <td><?= $actor["first_name"] ?> <?= $actor["last_name"] ?></td>
-                    <td><?= $actor["gender"] ?></td>
-                    <td><?= $actor["birthday"] ?></td>
+                    <td><?= $director["first_name"] ?> <?= $director["last_name"] ?></td>
+                    <td><?= $director["gender"] ?></td>
+                    <td><?= $director["birthday"] ?></td>
                 </tr>
         <?php } ?>
     </tbody>
 </table>
 <?php
 // On récupère toutes les carrières une seule fois
-$carrieres = $requeteCarriere->fetchAll();
-$dernierIndex = array_key_last($carrieres);
+$films = $requeteFilmo->fetchAll();
+$dernierIndex = array_key_last($films);
 ?>
  
-<p>A joué dans :</p>
+<p>A réalisé :</p>
 <p>
-<?php foreach ($carrieres as $index => $carriere): ?>
-<?= $carriere["title"] ?> (<?= $carriere["year_of_release"] ?>)
-    dans le rôle de <?= $carriere["character_first_name"] ?> <?= $carriere["character_last_name"] ?>
+<?php foreach ($films as $index => $film): ?>
+<?= $film["title"] ?> (<?= $film["year_of_release"] ?>)
 <?= ($index === $dernierIndex) ? '.' : ', ' ?>
 <?php endforeach; ?>
 </p>
@@ -56,4 +55,3 @@ $dernierIndex = array_key_last($carrieres);
     </div>
 </body>
 </html>
-

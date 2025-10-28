@@ -42,18 +42,4 @@ class CinemaController {
         $requeteCasting->execute(["id" => $id]);
         require "view/detFilm.php";
     }
-    /*
-     * Détails d'un acteur
-     */
-        public function detActor($id) {
-        $pdo = Connect::seConnecter();
-        $requete = $pdo->prepare(
-            "SELECT p.first_name, p.last_name, p.gender, p.birthday
-            FROM person p
-            INNER JOIN actor a ON a.id_person = p.id_person
-            WHERE a.id_actor = :id"
-        );
-        $requete->execute(["id" => $id]);
-        require "view/detActor.php";
-    }
 }
