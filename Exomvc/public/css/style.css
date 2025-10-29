@@ -1,39 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* === RESET & POLICE === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+
+/* === TOPBAR CONTAINER === */
 .topbarcontainer {
-    background: radial-gradient(circle, rgba(5, 24, 32, 1) 0%, rgba(6, 52, 72, 1) 50%, rgba(0, 0, 0, 1) 100%);
-
+  display: block;
+  text-transform: uppercase;
 }
+
+/* === TOPBAR (log in / join) === */
 .topbar {
-    display: contents;
-    background: #051820;
+  display: flex;
+  background: radial-gradient(
+    circle,
+    rgba(5, 24, 32, 1) 0%,
+    rgba(6, 52, 72, 1) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  justify-content: space-around;
+  border-bottom: 2px solid #195874;
+  align-items: center;
+  font-weight: bold;
 }
+
 .topbarcontainer a {
-        color: aliceblue;
-        
+  color: aliceblue;
+  text-decoration: unset;
 }
+
 .logo {
-
-        color: aliceblue;
+  color: aliceblue;
 }
 
+.log {
+  display: flex;
+  width: 30%;
+  justify-content: space-evenly;
+}
+
+/* Boutons de connexion */
+.log a {
+  font-size: 0.9em;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 1px solid aliceblue;
+  border-radius: 25px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.log a:hover {
+  color: #f6ad55;
+  border-color: #f6ad55;
+}
+
+/* === WRAPPER === */
 #wrapper {
-    background-color: #444444;
+  background-color: #444444;
+  height: 500vh;
 }
 
+/* === MENU PRINCIPAL === */
 .topmenu {
-    display: flex;
-    background-color: transparent;
-    color: aliceblue;
+  display: flex;
+  background-color: #444444;
+  color: aliceblue;
+  font-weight: bold;
+  padding-top: 0.5em;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.topmenugauche {
-    display: flex;
-    gap: 10%;
+.topmenu a {
+  font-size: 1.3em;
 }
+
+.topnav {
+  display: flex;
+  gap: 15%;
+  width: 30%;
+  align-items: center;
+}
+
 .menunom {
-    display: flex;
-    flex-direction: column;    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.menunom > img {
+  height: 50px;
+  width: 58px;
+}
+
 h2 {
-    margin: 0;
-    color: #F6AD55;
+  margin: 0;
+  color: #f6ad55;
+  font-size: large;
+}
+
+/* === BARRE DE RECHERCHE === */
+.searchcontainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search {
+  height: fit-content;
+  border: 1px solid black;
+  border-radius: 25px;
+  text-align: center;
+  color: #444444;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  z-index: 1;
+}
+
+button {
+  position: absolute;
+  right: -50px;
+  bottom: -21px;
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* === EFFET ANIMÉ LIENS (topnav) === */
+.topnav a {
+  position: relative;
+  color: aliceblue;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.6s ease;
+  padding-bottom: 4px;
+  display: inline-block;
+}
+
+.topnav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f28e2b, #f6ad55, #f9d9a8);
+  transition: width 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 2px;
+  box-shadow: 0 0 6px rgba(246, 173, 85, 0.6);
+}
+
+.topnav a:hover {
+  color: #f6ad55;
+  text-shadow: 0 0 8px rgba(246, 173, 85, 0.4);
+}
+
+.topnav a:hover::after {
+  width: 100%;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - À COMPLÉTER
+   ======================================== */
+
+@media (max-width: 992px) {
+  /* Tablettes */
+}
+
+@media (max-width: 768px) {
+  /* Mobiles */
+}
+
+@media (max-width: 480px) {
+  /* Très petits écrans */
 }
