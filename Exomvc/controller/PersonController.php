@@ -18,7 +18,7 @@ class PersonController {
         );
         $requeteActeur->execute(["id" => $id]);
         $requeteCarriere = $pdo->prepare(
-        "SELECT f.title, f.year_of_release, fr.character_first_name, fr.character_last_name
+        "SELECT f.title, f.year_of_release, f.id_film, fr.character_first_name, fr.character_last_name
         FROM film f
         INNER JOIN play pl ON pl.id_film = f.id_film
         INNER JOIN film_role fr ON fr.id_role = pl.id_role
@@ -42,7 +42,7 @@ class PersonController {
         );
         $requeteDirector->execute(["id" => $id]);
         $requeteFilmo = $pdo->prepare(
-            "SELECT f.title, f.year_of_release
+            "SELECT f.title, f.year_of_release, f.id_film
             FROM film f
             INNER JOIN director d ON d.id_director = f.id_director
             WHERE d.id_director = :id"

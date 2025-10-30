@@ -22,12 +22,18 @@ if(isset($_GET["action"])){
         //Films
         case "listFilms" : $ctrlCinema->listFilms(); 
         break;
+        case "listGenres" : $ctrlCinema->listGenres();
+        break;
+        case "listFilmsByGenre" : $ctrlCinema->listFilmsByGenre($id);
+        break;
         case "detFilm" : $ctrlCinema->detFilm($id);
         break;
+        //Personnes
         case "detActor" : $ctrlPerson->detActor($id);
         break;
         case "detDirector" : $ctrlPerson->detDirector($id);
         break;
+        //Accueil
         case "accueil" : $ctrlHome->accueil();
         break;
     }

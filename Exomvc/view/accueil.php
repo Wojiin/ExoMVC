@@ -2,7 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">                                     
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="./public/css/style.css">      
     <title>Elan-Cinéma</title>                                            
 </head>
@@ -25,10 +26,16 @@
         <!-- ====================== PARTIE MENU PRINCIPAL ====================== -->
         <div class="topmenu">
             <!-- Navigation gauche avec effet animé (data-text) -->
-            <div class="topnav">
-                <a href="#" data-text="genres">genres</a>
-                <a href="#" data-text="réalisateurs">réalisateurs</a>   
+            <div class="topnav">          
+                <a class="menugenre" href="#" data-text="genres">genres<i class="fa-solid fa-caret-down" ></i></a>            
+                    <ul class="deroulant">
+                        <?php
+                        require "view/listGenres.php";
+                        ?>
+                    </ul>
+                <a href="#" data-text="réalisateurs">réalisateurs</a>
                 <a href="#" data-text="acteurs">acteurs</a>
+                
             </div>
 
             <!-- Logo central + nom du site -->
@@ -42,7 +49,7 @@
                 <a href="#" data-text="Année de sortie">Année de sortie</a>
                 <div class="searchcontainer">
                     <input class="search" type="text" placeholder="Entrez votre recherche ici">
-                    <button>
+                    <button class="glass">
                         <img src="./public/img/search100.png" alt="loupe">
                     </button>
                 </div>

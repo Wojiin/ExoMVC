@@ -1,3 +1,5 @@
+
+
 <?php
 $titre = "Liste des films";
 $titre_secondaire = "Liste des films";?>
@@ -32,7 +34,7 @@ $titre_secondaire = "Liste des films";?>
             <?php
                 foreach($requete->fetchAll() as $film) { ?>
                     <tr>
-                        <td><?= $film["title"] ?></td>
+                        <td><a href="index.php?action=detFilm&id=<?=$film['id_film']?>"><?= $film["title"] ?></a></td>
                         <td><?= $film["year_of_release"] ?></td>
                     </tr>
             <?php } ?>
@@ -42,4 +44,4 @@ $titre_secondaire = "Liste des films";?>
     </div>
 </body>
 </html>
-
+<?php

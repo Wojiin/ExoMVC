@@ -57,6 +57,7 @@
 .log a:hover {
   color: #f6ad55;
   border-color: #f6ad55;
+  box-shadow: 0 0 6px rgba(246, 173, 85, 0.6);
 }
 
 /* === WRAPPER === */
@@ -87,12 +88,65 @@
   align-items: center;
 }
 
+.topnav a {
+  position: relative;
+  color: aliceblue;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.6s ease;
+  padding-bottom: 4px;
+  display: inline-block;
+}
+/* === EFFET ANIMÉ LIENS (topnav) === */
+
+
+.topnav a::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f28e2b, #f6ad55, #f9d9a8);
+  transition: width 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 2px;
+  box-shadow: 0 0 6px rgba(246, 173, 85, 0.6);
+}
+
+.topnav a:hover{
+  color: #f6ad55;
+  text-shadow: 0 0 8px rgba(246, 173, 85, 0.4);
+}
+
+.menugenre:hover .fa-caret-down{
+  transform: rotate(-180deg);
+}
+
+.topnav a:hover::after {
+  width: 100%;
+}
 .menunom {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+/* === MENU DEROULANT === */
+.deroulant {
+position: absolute;
+top: 10%;
+list-style: none;
+}
 
+.genre {
+
+}
+
+.genre > span {
+  height: 25px;
+}
+.genre > span > img {
+  height: inherit;
+}
 .menunom > img {
   height: 50px;
   width: 58px;
@@ -109,6 +163,7 @@ h2 {
   position: relative;
   display: flex;
   align-items: center;
+  
 }
 
 .search {
@@ -117,15 +172,14 @@ h2 {
   border-radius: 25px;
   text-align: center;
   color: #444444;
-  padding-bottom: 3px;
-  padding-top: 3px;
+  padding: 5px;
   z-index: 1;
 }
 
-button {
+.glass {
   position: absolute;
   right: -50px;
-  bottom: -21px;
+  bottom: -18px;
   background-color: transparent;
   border: none;
   text-align: center;
@@ -133,38 +187,7 @@ button {
   cursor: pointer;
 }
 
-/* === EFFET ANIMÉ LIENS (topnav) === */
-.topnav a {
-  position: relative;
-  color: aliceblue;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.6s ease;
-  padding-bottom: 4px;
-  display: inline-block;
-}
 
-.topnav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #f28e2b, #f6ad55, #f9d9a8);
-  transition: width 1s cubic-bezier(0.25, 0.8, 0.25, 1);
-  border-radius: 2px;
-  box-shadow: 0 0 6px rgba(246, 173, 85, 0.6);
-}
-
-.topnav a:hover {
-  color: #f6ad55;
-  text-shadow: 0 0 8px rgba(246, 173, 85, 0.4);
-}
-
-.topnav a:hover::after {
-  width: 100%;
-}
 
 /* ========================================
    RESPONSIVE DESIGN - À COMPLÉTER

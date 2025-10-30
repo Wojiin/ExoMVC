@@ -47,7 +47,8 @@ $dernierIndex = array_key_last($carrieres);
 <p>A joué dans :</p>
 <p>
 <?php foreach ($carrieres as $index => $carriere): ?>
-<?= $carriere["title"] ?> (<?= $carriere["year_of_release"] ?>)
+    <a href="index.php?action=detFilm&id=<?=$carriere['id_film']?>">
+<?= $carriere["title"] ?> (<?= $carriere["year_of_release"] ?>)</a>
     dans le rôle de <?= $carriere["character_first_name"] ?> <?= $carriere["character_last_name"] ?>
 <?= ($index === $dernierIndex) ? '.' : ', ' ?>
 <?php endforeach; ?>

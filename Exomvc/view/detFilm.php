@@ -35,7 +35,7 @@ $titre_secondaire = "Détails du film";?>
                     <td><?= $film["title"] ?></td>
                     <td><?= $film["year_of_release"] ?></td>
                     <td><?= $film["duration"] ?></td>
-                    <td><?= $film["first_name"] ?> <?= $film["last_name"] ?></td>                   
+                    <td><a href="index.php?action=detDirector&id=<?=$film['id_director']?>"><?= $film["first_name"] ?> <?= $film["last_name"] ?></a></td>                   
                 </tr>
         <?php } ?>
     </tbody>
@@ -49,7 +49,8 @@ $dernierIndex = array_key_last($castings);
 <p>Avec :</p>
     <p>
     <?php foreach($castings as $index => $casting):  ?>
-    <?= $casting["first_name"] ?> <?=$casting["last_name"]  ?> dans le rôle de <?= $casting["character_first_name"] ?> <?= $casting["character_last_name"] ?>
+        <a href="index.php?action=detActor&id=<?=$casting['id_actor']?>">
+    <?= $casting["first_name"] ?> <?=$casting["last_name"]  ?></a> dans le rôle de <?= $casting["character_first_name"] ?> <?= $casting["character_last_name"] ?>
     <?= ($index === $dernierIndex) ? '.' : ', ' ?>
     <?php endforeach; ?>
     </p>

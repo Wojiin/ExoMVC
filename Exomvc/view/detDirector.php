@@ -47,7 +47,8 @@ $dernierIndex = array_key_last($films);
 <p>A réalisé :</p>
 <p>
 <?php foreach ($films as $index => $film): ?>
-<?= $film["title"] ?> (<?= $film["year_of_release"] ?>)
+    <a href="index.php?action=detFilm&id=<?=$film['id_film']?>">
+<?= $film["title"] ?> (<?= $film["year_of_release"] ?>)</a>
 <?= ($index === $dernierIndex) ? '.' : ', ' ?>
 <?php endforeach; ?>
 </p>
