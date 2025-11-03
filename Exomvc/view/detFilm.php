@@ -15,6 +15,7 @@ $titre_secondaire = "Détails du film";?>
     </nav>
     <div id="wrapper" class="uk-container uk-container-expand">
         <main>
+            <a href="index.php?action=accueil">ACCUEIL</a>
             <div id="contenu">
                 <h1 class="uk-heading-divider">PDO Cinema</h1>
                 <h2 class="uk-heading-bullet"><?= $titre_secondaire ?></h2>
@@ -50,7 +51,7 @@ $dernierIndex = array_key_last($castings);
     <p>
     <?php foreach($castings as $index => $casting):  ?>
         <a href="index.php?action=detActor&id=<?=$casting['id_actor']?>">
-    <?= $casting["first_name"] ?> <?=$casting["last_name"]  ?></a> dans le rôle de <?= $casting["character_first_name"] ?> <?= $casting["character_last_name"] ?>
+    <?= $casting["first_name"] ?> <?=$casting["last_name"]  ?></a> dans le rôle de <strong><?= $casting["character_first_name"] ?> <?= $casting["character_last_name"] ?></strong>
     <?= ($index === $dernierIndex) ? '.' : ', ' ?>
     <?php endforeach; ?>
     </p>

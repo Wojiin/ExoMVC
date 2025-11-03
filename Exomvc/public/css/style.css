@@ -14,52 +14,6 @@
   text-transform: uppercase;
 }
 
-/* === TOPBAR (log in / join) === */
-.topbar {
-  display: flex;
-  background: radial-gradient(
-    circle,
-    rgba(5, 24, 32, 1) 0%,
-    rgba(6, 52, 72, 1) 50%,
-    rgba(0, 0, 0, 1) 100%
-  );
-  justify-content: space-around;
-  border-bottom: 2px solid #195874;
-  align-items: center;
-  font-weight: bold;
-}
-
-.topbarcontainer a {
-  color: aliceblue;
-  text-decoration: unset;
-}
-
-.logo {
-  color: aliceblue;
-}
-
-.log {
-  display: flex;
-  width: 30%;
-  justify-content: space-evenly;
-}
-
-/* Boutons de connexion */
-.log a {
-  font-size: 0.9em;
-  padding-left: 15px;
-  padding-right: 15px;
-  border: 1px solid aliceblue;
-  border-radius: 25px;
-  transition: color 0.3s ease, border-color 0.3s ease;
-}
-
-.log a:hover {
-  color: #f6ad55;
-  border-color: #f6ad55;
-  box-shadow: 0 0 6px rgba(246, 173, 85, 0.6);
-}
-
 /* === WRAPPER === */
 #wrapper {
   background-color: #444444;
@@ -69,26 +23,21 @@
 /* === MENU PRINCIPAL === */
 .topmenu {
   display: flex;
-  background-color: #444444;
+  background: radial-gradient(
+    circle,
+    rgba(5, 24, 32, 1) 0%,
+    rgba(6, 52, 72, 1) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  border-bottom: 2px solid #195874;
   color: aliceblue;
   font-weight: bold;
-  padding-top: 0.5em;
+  padding: 1.3em;
   justify-content: space-around;
   align-items: center;
 }
-
-.topmenu a {
-  font-size: 1.3em;
-}
-
-.topnav {
-  display: flex;
-  gap: 15%;
-  width: 30%;
-  align-items: center;
-}
-
-.topnav a {
+.topbar a {
+  font-size: 1.2em;
   position: relative;
   color: aliceblue;
   text-decoration: none;
@@ -97,10 +46,16 @@
   padding-bottom: 4px;
   display: inline-block;
 }
+
+.topnav {
+  display: flex;
+  gap: 15%;
+  align-items: center;
+}
+
 /* === EFFET ANIMÉ LIENS (topnav) === */
 
-
-.topnav a::after{
+.topbar a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -113,43 +68,46 @@
   box-shadow: 0 0 6px rgba(246, 173, 85, 0.6);
 }
 
-.topnav a:hover{
+.topbar a:hover {
   color: #f6ad55;
   text-shadow: 0 0 8px rgba(246, 173, 85, 0.4);
 }
 
-.menugenre:hover .fa-caret-down{
+.menugenre:hover .fa-caret-down {
   transform: rotate(-180deg);
 }
 
-.topnav a:hover::after {
+.topbar a:hover::after {
   width: 100%;
 }
 .menunom {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 30%;
 }
-/* === MENU DEROULANT === */
+/* === Apparition / disparition du menu déroulant === */
 .deroulant {
-position: absolute;
-top: 10%;
-list-style: none;
+  position: absolute;
+  top: 100%;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s;
+  pointer-events: none;
 }
 
-.genre {
-
+.menugenre {
+  position: relative;
+  display: block ruby;
 }
 
-.genre > span {
-  height: 25px;
-}
-.genre > span > img {
-  height: inherit;
-}
-.menunom > img {
-  height: 50px;
-  width: 58px;
+/* Quand on survole .menugenre ou le menu lui-même, il reste visible */
+.menugenre:hover .deroulant,
+.deroulant:hover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 h2 {
@@ -163,7 +121,6 @@ h2 {
   position: relative;
   display: flex;
   align-items: center;
-  
 }
 
 .search {
@@ -186,8 +143,6 @@ h2 {
   text-decoration: none;
   cursor: pointer;
 }
-
-
 
 /* ========================================
    RESPONSIVE DESIGN - À COMPLÉTER

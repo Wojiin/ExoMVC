@@ -16,6 +16,7 @@ $titre_secondaire = "Détails du réalisateur";?>
 </nav>
 <div id="wrapper" class="uk-container uk-container-expand">
     <main>
+        <a href="index.php?action=accueil">ACCUEIL</a>
         <div id="contenu">
             <h1 class="uk-heading-divider">PDO Cinema</h1>
             <h2 class="uk-heading-bullet"><?= $titre_secondaire ?></h2>

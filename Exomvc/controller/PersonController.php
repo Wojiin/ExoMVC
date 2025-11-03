@@ -6,6 +6,36 @@ use Model\Connect;
 
 class PersonController {
     /*
+     * Liste des acteurs
+     */
+            public function listActors() {
+        
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query(
+            "SELECT p.first_name, p.last_name, p.gender, p.birthday, a.id_actor
+            FROM person p
+            INNER JOIN actor a ON a.id_person = p.id_person
+            "
+        );
+        require "view/listActors.php";
+    }
+
+    /*
+     * Liste des réalisateurs
+     */
+        public function listDirectors() {
+        
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query(
+            "SELECT p.first_name, p.last_name, p.gender, p.birthday, d.id_director
+            FROM person p
+            INNER JOIN director d ON d.id_person = p.id_person
+            "
+        );
+        require "view/listDirectors.php";
+    }
+
+    /*
      * Détails d'un acteur
      */
         public function detActor($id) {
@@ -29,6 +59,7 @@ class PersonController {
         $requeteCarriere->execute(["id" => $id]);
         require "view/detActor.php";
     }
+
     /*
      * Détails d'un réalisateur
      */

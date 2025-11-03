@@ -12,6 +12,7 @@ $titre_secondaire = "Films par genre";
     <title><?= $titre ?></title>
 </head>
 <body>
+    <a href="index.php?action=accueil">ACCUEIL</a>
     <nav class ="uk-navbar-container" uk-navbar uk-sticky>
 
 </nav>

@@ -13,4 +13,5 @@ public function accueil() {
         );    
     require "view/accueil.php";
     }
+
 }

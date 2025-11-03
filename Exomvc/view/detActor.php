@@ -16,6 +16,7 @@ $titre_secondaire = "Détails de l'acteur";?>
 </nav>
 <div id="wrapper" class="uk-container uk-container-expand">
     <main>
+        <a href="index.php?action=accueil">ACCUEIL</a>
         <div id="contenu">
             <h1 class="uk-heading-divider">PDO Cinema</h1>
             <h2 class="uk-heading-bullet"><?= $titre_secondaire ?></h2>
@@ -49,7 +50,7 @@ $dernierIndex = array_key_last($carrieres);
 <?php foreach ($carrieres as $index => $carriere): ?>
     <a href="index.php?action=detFilm&id=<?=$carriere['id_film']?>">
 <?= $carriere["title"] ?> (<?= $carriere["year_of_release"] ?>)</a>
-    dans le rôle de <?= $carriere["character_first_name"] ?> <?= $carriere["character_last_name"] ?>
+    dans le rôle de <strong><?= $carriere["character_first_name"] ?> <?= $carriere["character_last_name"] ?></strong>
 <?= ($index === $dernierIndex) ? '.' : ', ' ?>
 <?php endforeach; ?>
 </p>

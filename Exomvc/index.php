@@ -19,22 +19,40 @@ $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 if(isset($_GET["action"])){
 
     switch ($_GET["action"]){
-        //Films
-        case "listFilms" : $ctrlCinema->listFilms(); 
+
+        // Films
+
+        case "listFilms": $ctrlCinema->listFilms();
         break;
-        case "listGenres" : $ctrlCinema->listGenres();
+        case "listFilmsByGenre": $ctrlCinema->listFilmsByGenre($id); 
         break;
-        case "listFilmsByGenre" : $ctrlCinema->listFilmsByGenre($id);
+        case "detFilm": $ctrlCinema->detFilm($id); 
         break;
-        case "detFilm" : $ctrlCinema->detFilm($id);
+
+        // Personnes
+
+        case "listActors": $ctrlPerson->listActors(); 
+        break; 
+        case "detActor": $ctrlPerson->detActor($id); 
         break;
-        //Personnes
-        case "detActor" : $ctrlPerson->detActor($id);
+        case "listDirectors": $ctrlPerson->listDirectors(); 
         break;
-        case "detDirector" : $ctrlPerson->detDirector($id);
+        case "detDirector": $ctrlPerson->detDirector($id); 
         break;
-        //Accueil
-        case "accueil" : $ctrlHome->accueil();
+
+        // Accueil
+
+        case "accueil": $ctrlHome->accueil(); break;
+
+        // Admin
+        case "ajouter": require "view/ajouter.php";
+        break;
+        case "ajouterGenre": $ctrlAdmin->ajouterGenre();
+        break;
+        case "ajouterFilm": $ctrlAdmin->ajouterFilm();
+        break;
+        case "ajouterPerson": $ctrlAdmin->ajouterPerson();
         break;
     }
+
 }
