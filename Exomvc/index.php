@@ -28,7 +28,10 @@ if(isset($_GET["action"])){
         break;
         case "detFilm": $ctrlCinema->detFilm($id); 
         break;
-
+        case "ajouterRole" : $ctrlCinema->ajouterRole();
+        break;
+        case "supprFilm" : $ctrlCinema->supprFilm($id);
+        break;
         // Personnes
 
         case "listActors": $ctrlPerson->listActors(); 

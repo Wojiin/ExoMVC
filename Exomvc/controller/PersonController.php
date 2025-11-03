@@ -8,7 +8,7 @@ class PersonController {
     /*
      * Liste des acteurs
      */
-            public function listActors() {
+        public function listActors() {
         
         $pdo = Connect::seConnecter();
         $requete = $pdo->query(
@@ -19,6 +19,7 @@ class PersonController {
         );
         require "view/listActors.php";
     }
+
 
     /*
      * Liste des réalisateurs

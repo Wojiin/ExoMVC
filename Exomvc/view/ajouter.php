@@ -25,12 +25,12 @@
         <option> Sélectionnez un réalisateur </option>
         <?php
         $pdo = \Model\Connect::seConnecter();
-        $requeteDirectors = $pdo->query("
-            SELECT d.id_director, CONCAT(p.first_name, ' ', p.last_name) AS nom
+        $requeteDirectors = $pdo->query(
+            "SELECT d.id_director, CONCAT(p.first_name, ' ', p.last_name) AS nom
             FROM director d
             INNER JOIN person p ON d.id_person = p.id_person
-            ORDER BY p.last_name
-        ");
+            ORDER BY p.last_name"
+        );
         $directors = $requeteDirectors->fetchAll();
 
         foreach ($directors as $director) {

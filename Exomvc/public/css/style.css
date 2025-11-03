@@ -99,7 +99,7 @@
 
 .menugenre {
   position: relative;
-  display: block ruby;
+  display: flex;
 }
 
 /* Quand on survole .menugenre ou le menu lui-même, il reste visible */

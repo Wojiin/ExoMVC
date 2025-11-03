@@ -28,6 +28,7 @@ $titre_secondaire = "Liste des films";?>
             <tr>
                 <th>TITRE</th>
                 <th>ANNEE SORTIE</th>
+                <th>SUPPRIMER</th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +37,7 @@ $titre_secondaire = "Liste des films";?>
                     <tr>
                         <td><a href="index.php?action=detFilm&id=<?=$film['id_film']?>"><?= $film["title"] ?></a></td>
                         <td><?= $film["year_of_release"] ?></td>
+                        <td><a href="index.php?action=supprFilm&id=<?=$film['id_film']?>">SUPPRIMER</a></td>
                     </tr>
             <?php } ?>
         </tbody>

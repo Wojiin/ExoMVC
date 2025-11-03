@@ -55,6 +55,41 @@ $dernierIndex = array_key_last($castings);
     <?= ($index === $dernierIndex) ? '.' : ', ' ?>
     <?php endforeach; ?>
     </p>
+
+<h3>Ajouter un rôle :</h3>
+
+<form action="index.php?action=detFilm&id=<?= $film['id_film']?>" method="post">
+
+    <label for="character_first_name">Prénom du rôle :</label>
+    <input type="text" id="character_first_name" name="character_first_name">
+
+    <label for="character_last_name">Nom du rôle :</label>
+    <input type="text" id="character_last_name" name="character_last_name">
+
+    <label for="id_actor">Acteur :</label>
+    <select id="id_actor" name="id_actor">
+        <option> Sélectionnez un acteur </option>
+        <?php
+        $pdo = \Model\Connect::seConnecter();
+         $requeteActors = $pdo->prepare(
+        "SELECT DISTINCT CONCAT(p.first_name, ' ', p.last_name) AS nom
+        FROM person p
+        INNER JOIN actor a ON a.id_person = p.id_person
+        INNER JOIN play pl ON a.id_actor = pl.id_actor
+        INNER JOIN film_role fr ON fr.id_role = pl.id_role
+        WHERE NOT pl.id_film = :id"
+         );
+        $requeteActors->execute(["id" => $id]
+        ); 
+        $actors = $requeteActors->fetchAll();
+
+        foreach ($actors as $actor) {
+            echo "<option value='{$actor['id_actor']}'>{$actor['nom']}</option>";
+        }
+        ?>
+    </select>
+    <button type="submit" name="submit">Ajouter</button>
+</form>
         </main>
     </div>
 </body>
