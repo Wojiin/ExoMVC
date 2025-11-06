@@ -42,10 +42,7 @@ $titre_secondaire = "Liste des réalisateurs";
                             <tr>
                                 <!-- Lien vers les détails du réalisateur -->
                                 <td>
-                                    <a href="index.php?action=detDirector&id=<?= $director['id_director'] ?>">
-                                        <?= $director["first_name"] ?> <?= $director["last_name"] ?>
-                                    </a>
-                                </td>
+                                    <a href="index.php?action=detDirector&id=<?= $director['id_director'] ?>"><?= $director["first_name"] ?> <?= $director["last_name"] ?></a></td>
                                 <td><?= $director["birthday"] ?></td>
                                 <td>
                                     <!-- Lien pour supprimer le réalisateur -->

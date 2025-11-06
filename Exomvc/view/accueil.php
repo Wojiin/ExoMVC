@@ -33,10 +33,13 @@
             <!-- Navigation droite ajout et recherche -->
              <a href="index.php?action=ajouter">ajouter</a>                
                 <div class="searchcontainer">
-                    <input class="search" type="text" placeholder="Entrez votre recherche ici">
-                    <button class="glass">
-                        <img src="./public/img/search100.png" alt="loupe">
-                    </button>
+                    <form action="" method="post">
+                        <input class="search" type="search" name="recherche" placeholder="Entrez votre recherche ici">
+                        <button class="glass" type="submit" name="clicksearch">
+                            <img src="./public/img/search100.png" alt="loupe">
+                        </button>
+                    </form>
+
                 </div>            
         </div> 
         </div>          
@@ -44,11 +47,16 @@
     <!-- Conteneur principal du contenu -->
     <div id="wrapper">
         <!-- Le contenu principal viendra ici -->
-    </div>
-
-    <!-- Zone principale du site (contenu dynamique) -->
+             <!-- Zone principale du site (contenu dynamique) -->
     <main>
         <!-- Sections, films, grilles, etc. -->
+         <section class="caroussel">
+            <figure>
+                <img src="public\img\ecran.png" alt="">
+            </figure>
+         </section>
     </main>
+    </div>
+
 </body>
 </html>

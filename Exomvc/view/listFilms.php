@@ -42,10 +42,7 @@ $titre_secondaire = "Liste des films";
                             <tr>
                                 <!-- Lien vers les détails du film -->
                                 <td>
-                                    <a href="index.php?action=detFilm&id=<?= $film['id_film'] ?>">
-                                        <?= $film["title"] ?>
-                                    </a>
-                                </td>
+                                    <a href="index.php?action=detFilm&id=<?= $film['id_film'] ?>"><?= $film["title"] ?></a></td>
                                 <td><?= $film["year_of_release"] ?></td>
                                 <td>
                                     <!-- Lien pour supprimer le film -->

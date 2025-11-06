@@ -56,7 +56,8 @@ if(isset($_GET["action"])){
 
         // Accueil
 
-        case "accueil": $ctrlHome->accueil(); break;
+        case "accueil": $ctrlHome->accueil(); 
+        break;
 
         // Admin
         case "ajouter": require "view/ajouter.php";

@@ -25,5 +25,5 @@ class HomeController {
         // Charge la vue associée à l'accueil
         require "view/accueil.php";
     }
-}
 
+}

@@ -1,18 +1,20 @@
 <?php
 
 // Catégorise virtuellement la classe
+
 namespace Controller;
 
 // Récupère la PDO (PHP Data Objects)
 use Model\Connect;
 
 // Définit la classe CinemaController
-class CinemaController {
-
+class CinemaController
+{
     /*
      * Liste tous les films
      */
-    public function listFilms() {
+    public function listFilms()
+    {
         // Connexion à la base de données
         $pdo = Connect::seConnecter();
 
@@ -29,7 +31,8 @@ class CinemaController {
     /*
      * Supprime un film
      */
-    public function deleteFilm($id) {
+    public function deleteFilm($id)
+    {
         $pdo = Connect::seConnecter();
 
         // Prépare la requête pour supprimer un film par son id
@@ -49,7 +52,8 @@ class CinemaController {
     /*
      * Liste les films d’un genre donné
      */
-    public function listFilmsByGenre($id) {
+    public function listFilmsByGenre($id)
+    {
         $pdo = Connect::seConnecter();
 
         // Prépare la requête pour récupérer les films d’un genre
@@ -69,7 +73,8 @@ class CinemaController {
     /*
      * Supprime un genre
      */
-    public function deleteGenre($id) {
+    public function deleteGenre($id)
+    {
         $pdo = Connect::seConnecter();
 
         // Prépare la requête pour supprimer un genre
@@ -89,7 +94,8 @@ class CinemaController {
     /*
      * Détails d’un film
      */
-    public function detFilm($id) {
+    public function detFilm($id)
+    {
         $pdo = Connect::seConnecter();
 
         // Récupère les informations du film et de son réalisateur
@@ -141,15 +147,16 @@ class CinemaController {
     /*
      * Ajouter un rôle pour un film
      */
-    public function ajouterRole($idFilm) {
+    public function ajouterRole($idFilm)
+    {
         $pdo = Connect::seConnecter();
 
         // Vérifie si le formulaire a été soumis
         if (isset($_POST['submit'])) {
             // Récupère et filtre les données du rôle
             $character_first_name = filter_input(INPUT_POST, "character_first_name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $character_last_name = filter_input(INPUT_POST, "character_last_name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $id_actor = filter_input(INPUT_POST, "id_actor", FILTER_SANITIZE_NUMBER_INT);
+            $character_last_name  = filter_input(INPUT_POST, "character_last_name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $id_actor             = filter_input(INPUT_POST, "id_actor", FILTER_SANITIZE_NUMBER_INT);
 
             // Si tous les champs sont remplis
             if ($character_first_name && $character_last_name && $id_actor) {
@@ -160,7 +167,7 @@ class CinemaController {
                 );
                 $requeteRole->execute([
                     "character_first_name" => $character_first_name,
-                    "character_last_name" => $character_last_name
+                    "character_last_name"  => $character_last_name
                 ]);
 
                 // Récupère l'identifiant du rôle inséré
@@ -172,9 +179,9 @@ class CinemaController {
                      VALUES (:id_film, :id_actor, :id_role)"
                 );
                 $requetePlay->execute([
-                    "id_film" => $idFilm,
+                    "id_film"  => $idFilm,
                     "id_actor" => $id_actor,
-                    "id_role" => $id_role
+                    "id_role"  => $id_role
                 ]);
             }
         }
@@ -186,13 +193,15 @@ class CinemaController {
     /*
      * Modifier un film
      */
-    public function updateFilm($id) {
+    public function updateFilm($id)
+    {
         $pdo = Connect::seConnecter();
 
         // Récupère les anciennes données du film
         $requete = $pdo->prepare(
             "SELECT * 
-             FROM film WHERE id_film = :id_film"
+             FROM film 
+             WHERE id_film = :id_film"
         );
         $requete->execute(["id_film" => $id]);
         $ancienneDonnees = $requete->fetch();
@@ -200,16 +209,24 @@ class CinemaController {
         // Vérifie si le formulaire a été soumis
         if (isset($_POST['submit'])) {
             // Récupère et filtre les nouvelles données
-            $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $title           = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $year_of_release = filter_input(INPUT_POST, "year_of_release", FILTER_SANITIZE_NUMBER_INT);
-            $duration = filter_input(INPUT_POST, "duration", FILTER_SANITIZE_NUMBER_INT);
-            $id_director = filter_input(INPUT_POST, "id_director", FILTER_SANITIZE_NUMBER_INT);
+            $duration        = filter_input(INPUT_POST, "duration", FILTER_SANITIZE_NUMBER_INT);
+            $id_director     = filter_input(INPUT_POST, "id_director", FILTER_SANITIZE_NUMBER_INT);
 
             // Conserve l'ancienne valeur si le champ est vide
-            if (!$title) $title = $ancienneDonnees['title'];
-            if (!$year_of_release) $year_of_release = $ancienneDonnees['year_of_release'];
-            if (!$duration) $duration = $ancienneDonnees['duration'];
-            if (!$id_director) $id_director = $ancienneDonnees['id_director'];
+            if (!$title) {
+                $title = $ancienneDonnees['title'];
+            }
+            if (!$year_of_release) {
+                $year_of_release = $ancienneDonnees['year_of_release'];
+            }
+            if (!$duration) {
+                $duration = $ancienneDonnees['duration'];
+            }
+            if (!$id_director) {
+                $id_director = $ancienneDonnees['id_director'];
+            }
 
             // Met à jour le film
             $requete = $pdo->prepare(
@@ -221,11 +238,11 @@ class CinemaController {
                  WHERE id_film = :id_film"
             );
             $requete->execute([
-                "title" => $title,
+                "title"           => $title,
                 "year_of_release" => $year_of_release,
-                "duration" => $duration,
-                "id_director" => $id_director,
-                "id_film" => $id
+                "duration"        => $duration,
+                "id_director"     => $id_director,
+                "id_film"         => $id
             ]);
 
             // Gestion des genres
@@ -244,7 +261,7 @@ class CinemaController {
                          VALUES (:id_film, :id_genre)"
                     );
                     $requete->execute([
-                        "id_film" => $id,
+                        "id_film"  => $id,
                         "id_genre" => $id_genre
                     ]);
                 }
@@ -255,3 +272,4 @@ class CinemaController {
         }
     }
 }
+/**/

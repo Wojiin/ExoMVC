@@ -42,10 +42,7 @@ $titre_secondaire = "Liste des acteurs";
                             <tr>
                                 <!-- Lien vers les détails de l'acteur -->
                                 <td>
-                                    <a href="index.php?action=detActor&id=<?= $actor['id_actor'] ?>">
-                                        <?= $actor["first_name"] ?> <?= $actor["last_name"] ?>
-                                    </a>
-                                </td>
+                                    <a href="index.php?action=detActor&id=<?= $actor['id_actor'] ?>"><?= $actor["first_name"] ?> <?= $actor["last_name"] ?></a></td>
                                 <!-- Date de naissance de l'acteur -->
                                 <td><?= $actor["birthday"] ?></td>
                                 <!-- Lien pour supprimer l'acteur -->
